@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import modelo.dao.ProductoDAO;
 import modelo.dto.ProductoDTO;
+import modelo.dto.TipoDTO;
 
 /**
  *
@@ -45,23 +46,39 @@ public class ProductoCTO extends HttpServlet {
             if(menu.equalsIgnoreCase("Producto"))
             {
                 Facade obj = new Facade();
+                Facade obj2 = new Facade();
                 switch (accion)
                 {
                     case "Listar":
                     {
                         List<ProductoDTO> lis = obj.listarProductos();
                         request.setAttribute("lista_productos", lis);
+                        
+                        List<TipoDTO> lis2 = obj.listarTipos();
+                        request.setAttribute("lista_tipos", lis2);
                         break;
                     }
-
+                    
+                    case "Buscar":
+                    {                       
+                        int tipo = Integer.parseInt(request.getParameter("txt_tipo_pro"));
+                        List<ProductoDTO> lis = obj2.listarProductos2(tipo);
+                        request.setAttribute("lista_productos", lis);
+                        
+                        List<TipoDTO> lis2 = obj2.listarTipos();
+                        request.setAttribute("lista_tipos", lis2);                      
+                        break;
+                    }
+                    
                     case "Agregar":
                     {
                         String nombre = request.getParameter("txt_nombre_pro");
                         String des = request.getParameter("txt_descripcion_pro");
                         int val = Integer.parseInt(request.getParameter("txt_valor_pro"));
+                        int tipo = Integer.parseInt(request.getParameter("txt_tipo_pro"));
                         Part part = request.getPart("imagen_pro");
                         InputStream inputStream = part.getInputStream();                       
-                        ProductoDTO nuevo = new ProductoDTO(nombre, des, val, inputStream);
+                        ProductoDTO nuevo = new ProductoDTO(nombre, des, val, tipo, inputStream);
                         obj.crearProducto(nuevo);
                         request.getRequestDispatcher("ProductoCTO?menu=Producto&accion=Listar").forward(request, response);
                         break;
@@ -83,9 +100,10 @@ public class ProductoCTO extends HttpServlet {
                         String nombre1=request.getParameter("txt_nombre_pro");
                         String des1=request.getParameter("txt_descripcion_pro");
                         int val1=Integer.parseInt(request.getParameter("txt_valor_pro"));
+                        int tipo = Integer.parseInt(request.getParameter("txt_tipo_pro"));
                         Part part1 = request.getPart("imagen_pro");
                         InputStream inputStream = part1.getInputStream();
-                        ProductoDTO actual = new ProductoDTO(id1,nombre1,des1,val1, inputStream);
+                        ProductoDTO actual = new ProductoDTO(id1,nombre1,des1,val1, tipo,inputStream);
                         obj.actualizarProducto(actual);
                         request.getRequestDispatcher("ProductoCTO?menu=Producto&accion=Listar").forward(request, response);
                         break;

@@ -6,6 +6,13 @@ body
     background-size: cover;
 }
 
+.AgregarProducto
+{
+    color: white; 
+    font-size: 25px;
+    font-family: courier;  
+}
+
 .card-text
 {
    color: white; 
@@ -21,17 +28,11 @@ body
 
 .navbar 
 {
-  background-color: #17202A;
-  opacity: 0.9;
-  font-family: courier;     
+    background-color: #17202A;
+    opacity: 0.9;
+    font-family: courier; 
+  
 }
-
-.navnav
-{
-    font-size: 55px;
-    color: white;
-}
-
 
 .card
 {

@@ -13,20 +13,23 @@ public class ProductoDTO implements Serializable
     private String nombre_pro;
     private String descripcion_pro;
     private int valor_pro;
+    private int Tipo_pro;
     private InputStream imagen_pro;
 
-    public ProductoDTO(int id_pro, String nombre_pro, String descripcion_pro, int valor_pro, InputStream imagen_pro) {
+    public ProductoDTO(int id_pro, String nombre_pro, String descripcion_pro, int valor_pro, int Tipo_pro, InputStream imagen_pro) {
         this.id_pro = id_pro;
         this.nombre_pro = nombre_pro;
         this.descripcion_pro = descripcion_pro;
         this.valor_pro = valor_pro;
+        this.Tipo_pro = Tipo_pro;
         this.imagen_pro = imagen_pro;
-    }   
-    
-    public ProductoDTO(String nombre_pro, String descripcion_pro, int valor_pro, InputStream imagen_pro) {
+    }
+
+    public ProductoDTO(String nombre_pro, String descripcion_pro, int valor_pro, int Tipo_pro, InputStream imagen_pro) {
         this.nombre_pro = nombre_pro;
         this.descripcion_pro = descripcion_pro;
         this.valor_pro = valor_pro;
+        this.Tipo_pro = Tipo_pro;
         this.imagen_pro = imagen_pro;
     }
 
@@ -65,6 +68,15 @@ public class ProductoDTO implements Serializable
         this.valor_pro = valor_pro;
     }
 
+    public int getTipo_pro() {
+        return Tipo_pro;
+    }
+
+    public void setTipo_pro(int Tipo_pro) {
+        this.Tipo_pro = Tipo_pro;
+    }
+
+    
     public InputStream getImagen_pro() {
         return imagen_pro;
     }
@@ -72,9 +84,8 @@ public class ProductoDTO implements Serializable
     public void setImagen_pro(InputStream imagen_pro) {
         this.imagen_pro = imagen_pro;
     }
-
- 
     
+
     @Override
     public String toString() {
         return this.id_pro+ " "+ this.nombre_pro;
@@ -98,6 +109,9 @@ public class ProductoDTO implements Serializable
         if (this.valor_pro != other.valor_pro) {
             return false;
         }
+        if (this.Tipo_pro != other.Tipo_pro) {
+            return false;
+        }
         if (!Objects.equals(this.nombre_pro, other.nombre_pro)) {
             return false;
         }
@@ -109,9 +123,6 @@ public class ProductoDTO implements Serializable
         }
         return true;
     }
-    
-    
-
     
     
 }

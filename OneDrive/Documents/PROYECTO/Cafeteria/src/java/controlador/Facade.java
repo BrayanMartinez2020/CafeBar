@@ -7,7 +7,9 @@ package controlador;
 
 import java.util.List;
 import modelo.dao.ProductoDAO;
+import modelo.dao.TipoDAO;
 import modelo.dto.ProductoDTO;
+import modelo.dto.TipoDTO;
 
 public class Facade 
 {
@@ -30,6 +32,22 @@ public class Facade
         return lst;
     }
     
+    public List<ProductoDTO> listarProductos2(int id)//funcion que enlista los productos que se van registrando
+    {
+        List<ProductoDTO> lst = null;
+        ProductoDAO dao = new ProductoDAO();
+        lst = dao.readAll2(id);
+        return lst;
+    }
+
+    public List<TipoDTO> listarTipos()//funcion que enlista los productos que se van registrando
+    {
+        List<TipoDTO> lst = null;
+        TipoDAO dao = new TipoDAO();
+        lst = dao.readAll();
+        return lst;
+    }
+    
     public ProductoDTO verProducto(ProductoDTO item) //funcion que muestra los datos de un producto registrado
     {
         ProductoDTO obj;
@@ -37,6 +55,7 @@ public class Facade
         obj=dao.read(item);
         return obj;        
     }
+    
     
     public boolean actualizarProducto(ProductoDTO objP) //funcion que actualiza los datos de un producto registrado
     {

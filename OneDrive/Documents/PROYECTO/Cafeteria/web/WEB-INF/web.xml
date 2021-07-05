@@ -4,9 +4,17 @@
         <servlet-name>ProductoCTO</servlet-name>
         <servlet-class>controlador.ProductoCTO</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TipoCTO</servlet-name>
+        <servlet-class>controlador.TipoCTO</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ProductoCTO</servlet-name>
         <url-pattern>/ProductoCTO</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TipoCTO</servlet-name>
+        <url-pattern>/TipoCTO</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
